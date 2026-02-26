@@ -12,10 +12,10 @@ export function AboutPreview() {
                     <AnimatedSection className="relative aspect-[3/4] md:aspect-auto md:h-[600px] lg:h-[700px] w-full order-2 md:order-1">
                         {/* TODO: Use a warm, approachable photo here - outdoors or candid works better than a studio shot for this section */}
                         <Image
-                            src="/images/listing-placeholder.jpg"
+                            src="https://cdn.realtor.ca/individual/TS637750507800000000/highres/1403257.jpg"
                             alt="Abdul Basharmal - Real Estate Professional"
                             fill
-                            className="object-cover"
+                            className="object-cover object-[center_0%]"
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </AnimatedSection>

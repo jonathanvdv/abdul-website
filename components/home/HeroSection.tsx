@@ -4,9 +4,9 @@ import { AnimatedSection } from '@/components/shared/AnimatedSection'
 
 export function HeroSection() {
     return (
-        <section className="relative min-h-[100dvh] flex flex-col md:flex-row bg-brand-bg">
+        <section className="relative min-h-[100dvh] flex flex-col md:flex-row bg-white pt-16 md:pt-20">
             {/* Left Content */}
-            <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-20 z-10 order-2 md:order-1 pt-24 md:pt-32">
+            <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-20 z-10 order-2 md:order-1">
                 <AnimatedSection>
                     <p className="text-brand-accent tracking-[0.2em] text-xs font-semibold uppercase mb-4 md:mb-6">
                         Kitchener · Waterloo · Cambridge
@@ -59,12 +59,12 @@ export function HeroSection() {
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top filter brightness-105"
+                    className="object-cover object-[center_10%] filter brightness-105"
                 />
                 {/* Subtle gradient overlay to blend image bottom into next section on mobile */}
-                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-brand-bg to-transparent md:hidden pointer-events-none"></div>
-                {/* Subtle green overlay edge on desktop */}
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-brand-bg to-transparent hidden md:block pointer-events-none"></div>
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent md:hidden pointer-events-none"></div>
+                {/* Subtle white overlay edge on desktop */}
+                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent hidden md:block pointer-events-none"></div>
             </div>
         </section>
     )
