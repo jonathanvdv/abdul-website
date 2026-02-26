@@ -46,7 +46,7 @@ export default function AboutPage() {
                         Real estate is about more than just transactions. It's about building futures and finding a place where you truly belong. I go out of my way to ensure my clients are guided correctly and honestly.
                     </p>
                     <p>
-                        Whether you are searching for your first home, looking to invest in the Waterloo or Toronto regions, or need expert advice on residential financing and leasing, I am here to help. I offer my services in multiple languages including <strong>English, Dari, Farsi, and Urdu</strong>, ensuring that our community is served with clarity and respect.
+                        Whether you are searching for your first home, looking to invest in the Waterloo or Toronto regions, or need expert advice on residential financing and leasing, I am here to help. I offer my services in multiple languages including <strong>English, Hindi, Persian, Urdu, Dari, and Farsi</strong>, ensuring that our community is served with clarity and respect.
                     </p>
                     <p>
                         Based in Kitchener and working with RE/MAX Twin City Realty, I bring a professional, results-oriented approach to every client interaction. Let's work together to make your real estate goals a reality.
@@ -124,7 +124,7 @@ export default function AboutPage() {
                                 </li>
                                 <li className="flex gap-4">
                                     <span className="text-brand-gold mt-1">•</span>
-                                    <span><strong>Languages:</strong> English, Dari (دری), Farsi (فارسی), Urdu (اردو), Pashto (پښتو)</span>
+                                    <span><strong>Languages:</strong> English, Hindi, Persian, Urdu, Dari, Farsi</span>
                                 </li>
                             </ul>
                         </div>

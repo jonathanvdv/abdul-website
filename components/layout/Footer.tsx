@@ -64,7 +64,7 @@ export function Footer() {
                 Kitchener, ON N2B 3C3
               </address>
               <p className="mt-4 text-brand-text-muted italic border-l border-brand-gold/30 pl-4">
-                Happy to connect in English, Dari (دری), Farsi (فارسی), Pashto (پښتو), or Urdu (اردو).
+                Happy to connect in English, Hindi, Persian, Urdu, Dari, or Farsi.
               </p>
             </div>
           </div>

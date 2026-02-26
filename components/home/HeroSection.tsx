@@ -18,7 +18,7 @@ export function HeroSection() {
                     </h1>
 
                     <p className="text-brand-text-muted text-lg sm:text-xl max-w-xl leading-relaxed mb-10 md:mb-12 font-light text-pretty">
-                        I'm Abdul - a REALTOR® with RE/MAX Twin City who grew up in this community, knows these streets, and genuinely loves helping people plant roots here. Whether you're buying your first home, selling to move on, or just trying to figure out what your place is worth - let's talk.
+                        I'm Abdul, a REALTOR® with RE/MAX Twin City who grew up in this community, knows these streets, and genuinely loves helping people plant roots here. Whether you're buying your first home, selling to move on, or just trying to figure out what your place is worth - let's talk.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 mb-16">
@@ -41,7 +41,7 @@ export function HeroSection() {
                             <span className="text-brand-accent">✓</span> RE/MAX Twin City Realty
                         </span>
                         <span className="flex items-center gap-3">
-                            <span className="text-brand-accent">✓</span> English · دری · پښتو · اردو
+                            <span className="text-brand-accent">✓</span> English · Hindi · Persian · Urdu · Dari · Farsi
                         </span>
                         <span className="flex items-center gap-3">
                             <span className="text-brand-accent">✓</span> Honest advice.

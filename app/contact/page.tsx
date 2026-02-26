@@ -73,7 +73,7 @@ export default async function ContactPage({
 
                         <div className="mt-12 pt-12 border-t border-brand-border/20">
                             <p className="text-brand-border/80 text-sm italic mb-8">
-                                I'm happy to connect in English, Dari (دری), Farsi (فارسی), Pashto (پښتو), or Urdu (اردو).
+                                I'm happy to connect in English, Hindi, Persian, Urdu, Dari, or Farsi.
                             </p>
 
                             <div className="flex gap-4">

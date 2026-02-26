@@ -35,7 +35,7 @@ export function AboutPreview() {
                                 Before real estate, I spent years at Rogers in data analytics and sales management. That background means I come to every transaction with a clear head and real numbers, not hunches. I'll tell you what your home is actually worth, and I'll tell you honestly if I think an offer is too high.
                             </p>
                             <p>
-                                I also serve the Dari and Pashto-speaking community across Kitchener-Waterloo. If you or your family are more comfortable navigating this process in Dari or Pashto, that's exactly how we'll do it.
+                                I also serve the English, Hindi, Persian, Urdu, Dari, and Farsi-speaking communities across Kitchener-Waterloo. If you or your family are more comfortable navigating this process in any of these languages, that's exactly how we'll do it.
                             </p>
                         </div>
 
