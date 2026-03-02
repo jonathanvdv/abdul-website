@@ -15,7 +15,7 @@ export default function AboutPage() {
             {/* Hero */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
                 <Image
-                    src="/abdul-photo-no-bg.png"
+                    src="/images/abdul-photo-no-bg-v2.png"
                     alt="Abdul Basharmal"
                     fill
                     priority
@@ -37,7 +37,7 @@ export default function AboutPage() {
                     </h2>
                 </div>
 
-                <div className="prose prose-lg prose-brand max-w-none text-brand-text-muted font-light leading-relaxed">
+                <div className="prose prose-lg prose-brand max-w-none text-brand-text-muted font-light leading-relaxed space-y-6">
                     <p>
                         With a strong background in sales and customer service, I am a licensed Real Estate Agent working closely with buyers, sellers, and tenants across Ontario. My goal is to provide you with the knowledge, insight, and clear guidance you need when navigating the process of buying, selling, staging, investing, or leasing.
                     </p>

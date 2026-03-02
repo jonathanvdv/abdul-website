@@ -55,7 +55,7 @@ export function StatsSection() {
                     </div>
 
                     <div className="text-center mt-12 pt-12 border-t border-brand-border/10">
-                        <p className="italic text-brand-text-muted text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                        <p className="italic text-brand-text-muted text-sm md:text-base leading-relaxed">
                             "Every number represents a family who trusted me with one of the biggest decisions of their life."
                         </p>
                     </div>
