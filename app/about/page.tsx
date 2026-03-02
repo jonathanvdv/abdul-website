@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { TestimonialsSection } from '@/components/home/TestimonialsSection'
 
 export const metadata: Metadata = {
-    title: 'About Abdul Basharmal | REALTOR® Kitchener-Waterloo',
+    title: 'About Abdul Basharmal | REALTOR® Waterloo Region',
     description: 'Learn about Abdul Basharmal - a data-driven REALTOR® with RE/MAX Twin City Realty in Kitchener, Ontario, serving buyers and sellers across the Waterloo Region.',
 }
 
@@ -14,14 +14,13 @@ export default function AboutPage() {
 
             {/* Hero */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
-                {/* TODO: Use a real, warm hero photo for the about page */}
                 <Image
-                    src="https://cdn.realtor.ca/individual/TS637750507800000000/highres/1403257.jpg"
+                    src="/abdul-photo-no-bg.png"
                     alt="Abdul Basharmal"
                     fill
                     priority
                     sizes="100vw"
-                    className="object-cover object-top"
+                    className="object-contain object-bottom"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-bg-dark/80 via-brand-bg-dark/40 to-transparent"></div>
                 <div className="relative z-10 text-center px-4">
@@ -40,16 +39,19 @@ export default function AboutPage() {
 
                 <div className="prose prose-lg prose-brand max-w-none text-brand-text-muted font-light leading-relaxed">
                     <p>
-                        Highly experienced in sales and customer service, I am a licensed Real Estate Agent working day-to-day with buyers and sellers in Ontario. My mission is to provide you with the knowledge, insights, and guidance you need when it comes to buying, selling, staging properties, and more.
+                        With a strong background in sales and customer service, I am a licensed Real Estate Agent working closely with buyers, sellers, and tenants across Ontario. My goal is to provide you with the knowledge, insight, and clear guidance you need when navigating the process of buying, selling, staging, investing, or leasing.
                     </p>
                     <p>
-                        Real estate is about more than just transactions. It's about building futures and finding a place where you truly belong. I go out of my way to ensure my clients are guided correctly and honestly.
+                        To me, real estate is about more than a transaction. It is about building futures, creating stability, and helping people find a place where they truly feel at home. I take pride in guiding my clients with honesty, transparency, and a strategy tailored to their specific goals.
                     </p>
                     <p>
-                        Whether you are searching for your first home, looking to invest in the Waterloo or Toronto regions, or need expert advice on residential financing and leasing, I am here to help. I offer my services in multiple languages including <strong>English, Hindi, Persian, Urdu, Dari, and Farsi</strong>, ensuring that our community is served with clarity and respect.
+                        Whether you are purchasing your first home, expanding your investment portfolio in the Waterloo or Toronto regions, selling to move on to your next chapter, or seeking advice on residential financing and leasing, I am here to support you every step of the way.
                     </p>
                     <p>
-                        Based in Kitchener and working with RE/MAX Twin City Realty, I bring a professional, results-oriented approach to every client interaction. Let's work together to make your real estate goals a reality.
+                        I proudly serve our diverse community in multiple languages, including <strong>English, Hindi, Persian, Urdu, Dari, and Farsi</strong>, ensuring every client feels understood and confident throughout the process.
+                    </p>
+                    <p>
+                        Based in Kitchener and working with RE/MAX Twin City Realty, I bring a professional and results driven approach to every interaction. I look forward to helping you achieve your real estate goals.
                     </p>
                 </div>
             </section>
@@ -69,7 +71,7 @@ export default function AboutPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-brand-text mb-4">If You're Buying</h3>
                                 <p className="text-brand-text-muted text-lg leading-relaxed font-light">
-                                    I'll tell you honestly when something is overpriced. I'll pull the real comps, explain what the market is doing right now in that specific neighbourhood, and help you make an offer you feel good about, not one you'll second-guess at 2am.
+                                    You can expect honest guidance from day 1. If a property is overpriced, I will tell you. I review accurate comparables, break down what is happening in that specific neighbourhood, and help you structure a strong, strategic offer that makes sense for you. My goal is for you to feel confident in your decision, not stressed or second guessing it later.
                                 </p>
                             </div>
                         </div>
@@ -81,7 +83,7 @@ export default function AboutPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-brand-text mb-4">If You're Selling</h3>
                                 <p className="text-brand-text-muted text-lg leading-relaxed font-light">
-                                    Pricing is everything, and bad pricing costs you real money. I'll give you a clear-eyed evaluation of what your home is worth in today's market, a plan to present it well, and a negotiation strategy that protects your number.
+                                    Pricing and presentation are critical. I provide a clear and realistic evaluation of your home's value in today's market, along with a detailed plan to showcase it properly. From professional marketing to a focused negotiation strategy, every step is designed to protect your bottom line and maximize your results.
                                 </p>
                             </div>
                         </div>
@@ -93,7 +95,7 @@ export default function AboutPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-brand-text mb-4">Either Way</h3>
                                 <p className="text-brand-text-muted text-lg leading-relaxed font-light">
-                                    You get my personal number. You can call or text. I'll respond the same day. I'm not running a team where you get handed off. I keep things manageable on purpose, because I'd rather do a great job for fewer clients than a mediocre one for many.
+                                    You work directly with me. You have my personal number, and you can call or text anytime. I respond promptly and keep communication clear throughout the process. I intentionally keep my business focused and manageable so I can give each client the attention, strategy, and service they truly deserve.
                                 </p>
                             </div>
                         </div>

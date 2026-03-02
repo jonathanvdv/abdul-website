@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { MortgageCalculator } from '@/components/shared/MortgageCalculator'
 
 export const metadata: Metadata = {
-    title: 'Mortgage Calculator | Kitchener-Waterloo Real Estate',
-    description: 'Estimate your monthly mortgage payments for Kitchener-Waterloo properties. Calculate interest, down payment, and explore options with Abdul Basharmal.',
+    title: 'Mortgage Calculator | Waterloo Region Real Estate',
+    description: 'Estimate your monthly mortgage payments for Waterloo Region properties. Calculate interest, down payment, and explore options with Abdul Basharmal.',
 }
 
 export default function MortgageCalculatorPage() {
@@ -30,7 +30,7 @@ export default function MortgageCalculatorPage() {
                         The interest rate you see here is a placeholder for calculation purposes. Current rates depend on many factors including whether the mortgage is insured (less than 20% down), your credit score, the property type, and whether you choose fixed or variable.
                     </p>
                     <p>
-                        If you need a recommendation for a trusted local mortgage broker in the Kitchener-Waterloo area who can get you a proper pre-approval, please <a href="/contact" className="text-brand-accent hover:underline font-medium">reach out</a>. They can often secure better rates than your home branch by shopping the market for you.
+                        If you need a recommendation for a trusted local mortgage broker in the Waterloo Region (Kitchener, Waterloo, Cambridge, Breslau, & More) who can get you a proper pre-approval, please <a href="/contact" className="text-brand-accent hover:underline font-medium">reach out</a>. They can often secure better rates than your home branch by shopping the market for you.
                     </p>
                 </div>
 

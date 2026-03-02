@@ -10,12 +10,11 @@ export function AboutPreview() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Image Side */}
                     <AnimatedSection className="relative aspect-[3/4] md:aspect-auto md:h-[600px] lg:h-[700px] w-full order-2 md:order-1">
-                        {/* TODO: Use a warm, approachable photo here - outdoors or candid works better than a studio shot for this section */}
                         <Image
-                            src="https://cdn.realtor.ca/individual/TS637750507800000000/highres/1403257.jpg"
+                            src="/abdul-photo-no-bg.png"
                             alt="Abdul Basharmal - Real Estate Professional"
                             fill
-                            className="object-cover object-[center_0%]"
+                            className="object-contain object-bottom"
                             sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </AnimatedSection>
@@ -35,7 +34,7 @@ export function AboutPreview() {
                                 Before real estate, I spent years at Rogers in data analytics and sales management. That background means I come to every transaction with a clear head and real numbers, not hunches. I'll tell you what your home is actually worth, and I'll tell you honestly if I think an offer is too high.
                             </p>
                             <p>
-                                I also serve the English, Hindi, Persian, Urdu, Dari, and Farsi-speaking communities across Kitchener-Waterloo. If you or your family are more comfortable navigating this process in any of these languages, that's exactly how we'll do it.
+                                I also serve the English, Hindi, Persian, Urdu, Dari, and Farsi-speaking communities across Waterloo Region (Kitchener, Waterloo, Cambridge, Breslau, & More). If you or your family are more comfortable navigating this process in any of these languages, that's exactly how we'll do it.
                             </p>
                         </div>
 

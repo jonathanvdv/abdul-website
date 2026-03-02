@@ -46,12 +46,12 @@ export function StatsSection() {
         <section className="bg-brand-bg-dark text-white py-16 lg:py-24 border-y border-brand-border/20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <AnimatedSection>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-0 gap-y-12">
-                        {/* TODO: Update these stats with Abdul's real numbers */}
+                    <div className="grid grid-cols-2 lg:grid-cols-5 gap-x-0 gap-y-12">
                         <Counter end={150} suffix="+" label="Families Helped" />
-                        <Counter end={10} suffix="+" label="Years in KW" />
+                        <Counter end={5} suffix="+" label="Years Licensed" />
+                        <Counter end={25} suffix="+" label="Years in Region" />
                         <Counter end={50} prefix="$" suffix="M+" label="Sold Properties" />
-                        <Counter end={3} label="Languages Spoken" />
+                        <Counter end={6} label="Languages Spoken" />
                     </div>
 
                     <div className="text-center mt-12 pt-12 border-t border-brand-border/10">

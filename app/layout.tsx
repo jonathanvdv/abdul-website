@@ -20,7 +20,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://abdulbasharmal.com'), // TODO: update to real domain
   title: {
-    default: 'Abdul Basharmal | REALTOR® in Kitchener-Waterloo | RE/MAX Twin City',
+    default: 'Abdul Basharmal | REALTOR® in Waterloo Region | RE/MAX Twin City',
     template: '%s | Abdul Basharmal Real Estate',
   },
   description: 'Abdul Basharmal is a REALTOR® with RE/MAX Twin City Realty in Kitchener, Ontario. Helping buyers and sellers in Kitchener, Waterloo, and Cambridge. Search listings, get a free home evaluation, or connect today.',

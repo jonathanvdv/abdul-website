@@ -17,9 +17,14 @@ export function HeroSection() {
                         <span className="italic">Feels Like Home.</span>
                     </h1>
 
-                    <p className="text-brand-text-muted text-lg sm:text-xl max-w-xl leading-relaxed mb-10 md:mb-12 font-light text-pretty">
-                        I'm Abdul, a REALTOR® with RE/MAX Twin City who grew up in this community, knows these streets, and genuinely loves helping people plant roots here. Whether you're buying your first home, selling to move on, or just trying to figure out what your place is worth - let's talk.
-                    </p>
+                    <div className="text-brand-text-muted text-lg sm:text-xl max-w-xl leading-relaxed mb-10 md:mb-12 font-light text-pretty space-y-4">
+                        <p>
+                            I'm Abdul Basharmal, a REALTOR® with RE/MAX Twin City, proud to have grown up in this community and to have a strong understanding of the Waterloo Region market. I know the neighborhoods, the schools, the market trends, and what makes each area unique. Real estate is more than just a transaction to me. It is about helping people build their lives and put down roots in a place they can truly call home.
+                        </p>
+                        <p>
+                            Whether you are buying your first property, selling and moving on to your next chapter, or looking to rent the right place for your lifestyle and budget, I am here to guide you with clear advice and local expertise every step of the way. If you are simply curious about what your home is worth in today's market, I would be happy to provide that insight as well. Let's connect and talk about your goals.
+                        </p>
+                    </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 mb-16">
                         <Link
@@ -51,20 +56,19 @@ export function HeroSection() {
             </div>
 
             {/* Right Image */}
-            <div className="flex-1 relative order-1 md:order-2 h-[50vh] md:h-auto min-h-[400px]">
-                {/* TODO: Use a real professional photo here */}
+            <div className="flex-1 relative order-1 md:order-2 h-[70vh] md:h-auto min-h-[500px] overflow-hidden">
                 <Image
-                    src="https://cdn.realtor.ca/individual/TS637750507800000000/highres/1403257.jpg"
-                    alt="Abdul Basharmal - Kitchener Waterloo REALTOR"
+                    src="/abdul-photo-no-bg.png"
+                    alt="Abdul Basharmal - Waterloo Region REALTOR"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-[center_10%] filter brightness-105"
+                    className="object-contain object-right-bottom"
                 />
                 {/* Subtle gradient overlay to blend image bottom into next section on mobile */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent md:hidden pointer-events-none"></div>
                 {/* Subtle white overlay edge on desktop */}
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent hidden md:block pointer-events-none"></div>
+                <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent hidden md:block pointer-events-none"></div>
             </div>
         </section>
     )
