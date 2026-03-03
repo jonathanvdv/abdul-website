@@ -9,20 +9,117 @@ export async function POST(request: Request) {
 
         const { error } = await resend.emails.send({
             from: 'Abdul Basharmal <no-reply@abdulsellshomes.com>',
-            to: 'jonvan225@gmail.com',
+            to: 'abdulbashrealtor@gmail.com',
             replyTo: email,
             subject: `New ${intent || 'Contact'} Inquiry from ${firstName} ${lastName}`,
             html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-                ${intent ? `<p><strong>Intent:</strong> ${intent}</p>` : ''}
-                ${language ? `<p><strong>Preferred Language:</strong> ${language}</p>` : ''}
-                ${listingAddress ? `<p><strong>Listing Address:</strong> ${listingAddress}</p>` : ''}
-                <hr />
-                <p><strong>Message:</strong></p>
-                <p>${message}</p>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background-color:#f5f5f0;font-family:Georgia,'Times New Roman',serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f5f0;padding:40px 20px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:2px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+
+<!-- Header -->
+<tr>
+<td style="background-color:#1a1a1a;padding:32px 40px;text-align:center;">
+<h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:400;letter-spacing:2px;">ABDUL BASHARMAL</h1>
+<p style="margin:6px 0 0;color:#b8a88a;font-size:11px;letter-spacing:3px;font-family:Arial,Helvetica,sans-serif;">REALTOR&reg; &middot; RE/MAX TWIN CITY</p>
+</td>
+</tr>
+
+<!-- Gold accent line -->
+<tr><td style="background-color:#b8a88a;height:3px;font-size:0;line-height:0;">&nbsp;</td></tr>
+
+<!-- Title -->
+<tr>
+<td style="padding:32px 40px 16px;">
+<h2 style="margin:0;color:#1a1a1a;font-size:18px;font-weight:400;letter-spacing:1px;">New ${intent || 'Contact'} Inquiry</h2>
+<p style="margin:8px 0 0;color:#888;font-size:12px;font-family:Arial,Helvetica,sans-serif;">Received from your website</p>
+</td>
+</tr>
+
+<!-- Divider -->
+<tr><td style="padding:0 40px;"><div style="border-top:1px solid #e8e4dc;"></div></td></tr>
+
+<!-- Contact Details -->
+<tr>
+<td style="padding:24px 40px;">
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Name</span><br>
+<span style="color:#1a1a1a;font-size:15px;">${firstName} ${lastName}</span>
+</td>
+</tr>
+<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Email</span><br>
+<a href="mailto:${email}" style="color:#1a1a1a;font-size:15px;text-decoration:none;">${email}</a>
+</td>
+</tr>
+${phone ? `<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Phone</span><br>
+<a href="tel:${phone}" style="color:#1a1a1a;font-size:15px;text-decoration:none;">${phone}</a>
+</td>
+</tr>` : ''}
+${intent ? `<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Interest</span><br>
+<span style="color:#1a1a1a;font-size:15px;">${intent}</span>
+</td>
+</tr>` : ''}
+${language ? `<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Preferred Language</span><br>
+<span style="color:#1a1a1a;font-size:15px;">${language}</span>
+</td>
+</tr>` : ''}
+${listingAddress ? `<tr>
+<td style="padding:8px 0;vertical-align:top;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Listing Address</span><br>
+<span style="color:#1a1a1a;font-size:15px;">${listingAddress}</span>
+</td>
+</tr>` : ''}
+</table>
+</td>
+</tr>
+
+<!-- Divider -->
+<tr><td style="padding:0 40px;"><div style="border-top:1px solid #e8e4dc;"></div></td></tr>
+
+<!-- Message -->
+<tr>
+<td style="padding:24px 40px 32px;">
+<span style="color:#999;font-size:11px;letter-spacing:1px;font-family:Arial,Helvetica,sans-serif;text-transform:uppercase;">Message</span>
+<p style="margin:10px 0 0;color:#1a1a1a;font-size:15px;line-height:1.7;">${message}</p>
+</td>
+</tr>
+
+<!-- Reply CTA -->
+<tr>
+<td style="padding:0 40px 36px;" align="center">
+<a href="mailto:${email}" style="display:inline-block;background-color:#1a1a1a;color:#ffffff;font-size:13px;font-family:Arial,Helvetica,sans-serif;letter-spacing:2px;text-decoration:none;padding:14px 36px;border-radius:2px;">REPLY TO ${firstName.toUpperCase()}</a>
+</td>
+</tr>
+
+<!-- Footer -->
+<tr>
+<td style="background-color:#f9f8f5;padding:24px 40px;text-align:center;border-top:1px solid #e8e4dc;">
+<p style="margin:0;color:#aaa;font-size:11px;font-family:Arial,Helvetica,sans-serif;letter-spacing:1px;">ABDULSELLSHOMES.COM</p>
+</td>
+</tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
             `,
         })
 
