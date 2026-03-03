@@ -8,8 +8,8 @@ export async function POST(request: Request) {
         const { firstName, lastName, email, phone, message, intent, language, listingAddress } = body
 
         const { error } = await resend.emails.send({
-            from: 'Abdul Basharmal Website <onboarding@resend.dev>',
-            to: 'abdulbashrealtor@gmail.com',
+            from: 'Abdul Basharmal <no-reply@abdulsellshomes.com>',
+            to: 'jonvan225@gmail.com',
             replyTo: email,
             subject: `New ${intent || 'Contact'} Inquiry from ${firstName} ${lastName}`,
             html: `
