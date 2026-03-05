@@ -23,10 +23,7 @@ export default function NeighbourhoodsPage() {
 
             </div>
 
-            {/* Reuse the animated slider/grid component for the main visual display */}
-            <div className="-mt-8 pb-12">
-                <NeighbourhoodGuide />
-            </div>
+            <NeighbourhoodGuide showHeader={false} />
 
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
