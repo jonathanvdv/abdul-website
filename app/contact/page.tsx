@@ -77,15 +77,15 @@ export default async function ContactPage({
                             </p>
 
                             <div className="flex gap-4">
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
+                                <a href="https://www.instagram.com/realtor.519/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
                                     <span className="sr-only">Instagram</span>
                                     <Instagram className="w-4 h-4" />
                                 </a>
-                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
+                                <a href="https://www.facebook.com/abdulbasharmal.remaxtwincity/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
                                     <span className="sr-only">Facebook</span>
                                     <Facebook className="w-4 h-4" />
                                 </a>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
+                                <a href="https://www.linkedin.com/in/abdul-basharmal-797b06104/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-brand-border/20 flex items-center justify-center hover:bg-brand-accent hover:border-brand-accent transition-colors text-white">
                                     <span className="sr-only">LinkedIn</span>
                                     <Linkedin className="w-4 h-4" />
                                 </a>

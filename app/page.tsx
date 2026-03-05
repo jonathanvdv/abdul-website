@@ -68,15 +68,15 @@ export default function Home() {
                 <div className="mt-10 pt-8 border-t border-brand-border">
                   <p className="text-sm font-semibold text-brand-text mb-4 uppercase tracking-wider">Follow for Market Updates</p>
                   <div className="flex gap-4">
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
+                    <a href="https://www.instagram.com/realtor.519/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
                       <span className="sr-only">Instagram</span>
                       <Instagram className="w-4 h-4" />
                     </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
+                    <a href="https://www.facebook.com/abdulbasharmal.remaxtwincity/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
                       <span className="sr-only">Facebook</span>
                       <Facebook className="w-4 h-4" />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
+                    <a href="https://www.linkedin.com/in/abdul-basharmal-797b06104/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-sm bg-white border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-accent hover:border-brand-accent transition-colors shadow-sm">
                       <span className="sr-only">LinkedIn</span>
                       <Linkedin className="w-4 h-4" />
                     </a>
