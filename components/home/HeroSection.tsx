@@ -5,7 +5,7 @@ import { AnimatedSection } from '@/components/shared/AnimatedSection'
 export function HeroSection() {
     return (
         <section className="relative w-full lg:min-h-[85vh] xl:min-h-[80vh] bg-white pt-[90px] pb-8 lg:pt-32 lg:pb-0 flex flex-col overflow-hidden">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12 w-full flex-1 flex flex-col relative justify-center">
+            <div className="max-w-6xl 2xl:max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-12 2xl:px-20 w-full flex-1 flex flex-col relative justify-center">
                 <div className="flex flex-col lg:flex-row flex-1 h-full w-full">
 
                     {/* Main Content Area */}
@@ -19,12 +19,12 @@ export function HeroSection() {
                                     Kitchener · Waterloo · Cambridge
                                 </p>
 
-                                <h1 className="font-display text-[2.5rem] leading-[1.05] sm:text-5xl lg:text-6xl text-brand-text mb-4 lg:mb-6 text-balance">
+                                <h1 className="font-display text-[2.5rem] leading-[1.05] sm:text-5xl lg:text-6xl 2xl:text-7xl text-brand-text mb-4 lg:mb-6 text-balance">
                                     Real Estate That <br className="hidden lg:block md:block" />
                                     <span className="italic">Feels Like Home.</span>
                                 </h1>
 
-                                <div className="text-brand-text-muted text-[13px] sm:text-sm lg:text-lg lg:max-w-none leading-relaxed font-light text-pretty space-y-4 lg:space-y-6">
+                                <div className="text-brand-text-muted text-[13px] sm:text-sm lg:text-lg 2xl:text-xl lg:max-w-none leading-relaxed font-light text-pretty space-y-4 lg:space-y-6">
                                     <p>
                                         I'm Abdul Basharmal, a REALTOR® with RE/MAX Twin City. Born and raised in the Waterloo Region, I bring deep local knowledge of the neighbourhoods, schools, and market trends to help you succeed.
                                     </p>
@@ -74,7 +74,7 @@ export function HeroSection() {
                     </div>
 
                     {/* Desktop Image */}
-                    <div className="hidden lg:block w-5/12 relative h-full min-h-[600px] z-0">
+                    <div className="hidden lg:block w-5/12 relative h-full min-h-[600px] 2xl:min-h-[700px] z-0">
                         <Image
                             src="/images/abdul-photo-no-bg-v2.png"
                             alt="Abdul Basharmal - Waterloo Region REALTOR"
