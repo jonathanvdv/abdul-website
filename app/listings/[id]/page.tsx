@@ -4,6 +4,7 @@ import { ImageGallery } from '@/components/listings/ImageGallery'
 import { ListingDisclaimer } from '@/components/listings/ListingDisclaimer'
 import { ContactForm } from '@/components/shared/ContactForm'
 import { Bed, Bath, Maximize, Car, Calendar, MapPin, ExternalLink, Home } from 'lucide-react'
+import { MobileContactSheet } from '@/components/listings/MobileContactSheet'
 import Image from 'next/image'
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
@@ -81,7 +82,7 @@ export default async function ListingDetailPage({
                             <span className="text-base font-normal text-gray-500 ml-1">/{listing.rentFrequency.toLowerCase()}</span>
                         )}
                     </div>
-                    <div className="flex items-center gap-6 text-sm text-gray-600">
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-600">
                         <span className="flex items-center gap-1.5">
                             <Bed className="w-4 h-4 text-gray-400" />
                             <span className="font-semibold text-gray-900">{listing.beds}</span> Beds
@@ -297,7 +298,7 @@ export default async function ListingDetailPage({
 
                     {/* Right Column — Sticky Contact Card */}
                     <div className="w-full lg:w-1/3 shrink-0">
-                        <div className="sticky top-28 space-y-6">
+                        <div className="space-y-6">
 
                             {/* CTA Banner */}
                             <div className="bg-brand-accent/5 border border-brand-accent/20 rounded-lg p-5 text-center">
@@ -351,13 +352,11 @@ export default async function ListingDetailPage({
             </div>
 
         </div>
-        {/* Floating mobile contact button */}
-        <a
-            href="/contact"
-            className="fixed bottom-5 right-4 z-[9999] md:hidden px-4 py-2 text-xs font-semibold rounded-full border-2 border-brand-accent text-brand-accent bg-white shadow-lg"
-        >
-            Contact Me
-        </a>
+        {/* Floating mobile contact sheet */}
+        <MobileContactSheet
+            defaultMessage={`Hi Abdul, I'm interested in the property at ${listing.address.full} (MLS: ${listing.mlsNumber}). I'd like to book a showing or get more information.`}
+            listingAddress={listing.address.full}
+        />
         </>
     )
 }
