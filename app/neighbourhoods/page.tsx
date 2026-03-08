@@ -12,7 +12,7 @@ export default function NeighbourhoodsPage() {
         <div className="bg-brand-bg min-h-screen pt-[124px] lg:pt-[136px] pb-16 border-t border-brand-border/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <div className="text-center mb-16 md:mb-20">
+                <div className="text-center mb-8 md:mb-12">
                     <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-brand-text mb-6">
                         <span className="italic text-brand-accent">Neighbourhoods</span> of <br className="hidden md:block" />Waterloo Region
                     </h1>

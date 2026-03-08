@@ -50,7 +50,7 @@ export function NeighbourhoodGuide({ showHeader = true }: { showHeader?: boolean
     ]
 
     return (
-        <section className="py-24 md:py-32 bg-white relative">
+        <section className={`${showHeader ? 'py-24 md:py-32' : 'py-8 md:py-12'} bg-white relative`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {showHeader && (
