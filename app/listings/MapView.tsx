@@ -11,38 +11,89 @@ interface MapViewProps {
     totalCount: number
 }
 
-function buildQuery(params: Record<string, string>): string {
-    const sp = new URLSearchParams()
-    for (const [k, v] of Object.entries(params)) {
-        if (v) sp.set(k, v)
-    }
-    return sp.toString()
-}
-
 const PER_PAGE = 20
 
+// Client-side filter: apply transaction type, price, beds, baths, property type
+function filterPins(pins: MapPin[], params: Record<string, string>): MapPin[] {
+    let result = pins
+
+    const tt = params.tt
+    if (tt === 'sale') result = result.filter(p => !p.isRental)
+    else if (tt === 'rent') result = result.filter(p => p.isRental)
+
+    const lp = params.lp ? Number(params.lp) : 0
+    const hp = params.hp ? Number(params.hp) : 0
+    if (lp) result = result.filter(p => p.price >= lp)
+    if (hp) result = result.filter(p => p.price <= hp)
+
+    const bd = params.bd ? Number(params.bd) : 0
+    if (bd) result = result.filter(p => p.beds >= bd)
+
+    const ba = params.ba ? Number(params.ba) : 0
+    if (ba) result = result.filter(p => p.baths >= ba)
+
+    const pt = params.pt
+    if (pt) result = result.filter(p => p.propertyType === pt)
+
+    // Sort
+    const sortField = params.sortField
+    const sortDir = params.sortDirection || 'desc'
+    if (sortField === 'listingPrice') {
+        result = [...result].sort((a, b) => sortDir === 'asc' ? a.price - b.price : b.price - a.price)
+    } else {
+        // Default: newest first (by listDate)
+        result = [...result].sort((a, b) => {
+            const da = a.listDate ? new Date(a.listDate).getTime() : 0
+            const db = b.listDate ? new Date(b.listDate).getTime() : 0
+            return sortDir === 'asc' ? da - db : db - da
+        })
+    }
+
+    return result
+}
+
 export function MapView({ filterParams, totalCount }: MapViewProps) {
-    const [pins, setPins] = useState<MapPin[] | null>(null)
+    const [allPins, setAllPins] = useState<MapPin[] | null>(null)
     const [bounds, setBounds] = useState<MapBounds | null>(null)
     const [page, setPage] = useState(0)
+    const [isDesktop, setIsDesktop] = useState(false)
     const sidebarRef = useRef<HTMLDivElement>(null)
 
-    // Fetch all pins on mount / filter change
+    // Detect desktop (lg breakpoint = 1024px)
     useEffect(() => {
-        let cancelled = false
-        setPins(null)
+        const mq = window.matchMedia('(min-width: 1024px)')
+        setIsDesktop(mq.matches)
+        const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+        mq.addEventListener('change', handler)
+        return () => mq.removeEventListener('change', handler)
+    }, [])
 
-        fetch(`/api/listings/map-pins?${buildQuery(filterParams)}`)
+    // Fetch ALL pins once on mount (no filters) — subsequent filter changes are instant
+    useEffect(() => {
+        if (!isDesktop) { setAllPins([]); return }
+        let cancelled = false
+        setAllPins(null)
+
+        fetch('/api/listings/map-pins', { priority: 'low' as any })
             .then(r => r.json())
             .then(data => {
-                if (!cancelled) setPins(data.pins)
+                if (!cancelled) setAllPins(data.pins)
             })
             .catch(() => {
-                if (!cancelled) setPins([])
+                if (!cancelled) setAllPins([])
             })
 
         return () => { cancelled = true }
-    }, [filterParams])
+    }, [isDesktop]) // only re-fetch if desktop state changes, NOT on filter change
+
+    // Apply filters client-side — instant, no network call
+    const filteredPins = useMemo(() => {
+        if (!allPins) return null
+        return filterPins(allPins, filterParams)
+    }, [allPins, filterParams])
+
+    // Reset page when filters change
+    useEffect(() => { setPage(0) }, [filterParams])
 
     // Debounced bounds change
     const boundsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -50,18 +101,18 @@ export function MapView({ filterParams, totalCount }: MapViewProps) {
         if (boundsTimerRef.current) clearTimeout(boundsTimerRef.current)
         boundsTimerRef.current = setTimeout(() => {
             setBounds(b)
-            setPage(0) // reset to page 1 on pan/zoom
+            setPage(0)
         }, 300)
     }, [])
 
     // Filter pins to visible bounds client-side
     const visiblePins = useMemo(() => {
-        if (!pins || !bounds) return pins || []
-        return pins.filter(p =>
+        if (!filteredPins || !bounds) return filteredPins || []
+        return filteredPins.filter(p =>
             p.lat >= bounds.south && p.lat <= bounds.north &&
             p.lng >= bounds.west && p.lng <= bounds.east
         )
-    }, [pins, bounds])
+    }, [filteredPins, bounds])
 
     const totalPages = Math.max(1, Math.ceil(visiblePins.length / PER_PAGE))
     const sidebarPins = useMemo(
@@ -74,14 +125,15 @@ export function MapView({ filterParams, totalCount }: MapViewProps) {
         sidebarRef.current?.scrollTo({ top: 0 })
     }, [page])
 
+    const loading = allPins === null
+
     return (
         <div className="flex h-[calc(100vh-180px)] min-h-[500px]">
-            {/* Sidebar — ~25% like realtor.ca */}
+            {/* Sidebar */}
             <div className="w-full lg:w-[340px] xl:w-[380px] flex-shrink-0 flex flex-col bg-white border-r border-gray-200">
-                {/* Results header */}
                 <div className="px-3 py-2 border-b border-gray-200 flex-shrink-0">
                     <p className="text-sm text-gray-600">
-                        {pins === null ? (
+                        {loading ? (
                             <span className="text-gray-400">Loading...</span>
                         ) : (
                             <>
@@ -91,9 +143,8 @@ export function MapView({ filterParams, totalCount }: MapViewProps) {
                     </p>
                 </div>
 
-                {/* Scrollable listing cards */}
                 <div ref={sidebarRef} className="flex-1 overflow-y-auto">
-                    {pins === null ? (
+                    {loading ? (
                         Array.from({ length: 5 }).map((_, i) => (
                             <div key={i} className="flex gap-3 p-3 border-b border-gray-200 animate-pulse">
                                 <div className="w-[140px] h-[100px] bg-gray-200 rounded flex-shrink-0" />
@@ -115,8 +166,7 @@ export function MapView({ filterParams, totalCount }: MapViewProps) {
                     )}
                 </div>
 
-                {/* Pagination footer */}
-                {pins && visiblePins.length > PER_PAGE && (
+                {!loading && visiblePins.length > PER_PAGE && (
                     <div className="flex items-center justify-center gap-3 px-3 py-2.5 border-t border-gray-200 flex-shrink-0 bg-white">
                         <button
                             onClick={() => setPage(p => Math.max(0, p - 1))}
@@ -139,14 +189,14 @@ export function MapView({ filterParams, totalCount }: MapViewProps) {
                 )}
             </div>
 
-            {/* Map — fills remaining space */}
+            {/* Map */}
             <div className="hidden lg:block flex-1">
-                {pins === null ? (
+                {loading ? (
                     <div className="w-full h-full bg-gray-100 animate-pulse flex items-center justify-center text-gray-400 text-sm">
                         Loading map...
                     </div>
                 ) : (
-                    <ListingMap pins={pins} onBoundsChange={handleBoundsChange} />
+                    <ListingMap pins={filteredPins || []} onBoundsChange={handleBoundsChange} />
                 )}
             </div>
         </div>

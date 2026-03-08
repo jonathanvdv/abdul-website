@@ -40,8 +40,6 @@ const OVERLAY_W = 370
 const OVERLAY_H = 340 // approximate height of overlay
 
 function formatPrice(price: number): string {
-    if (price >= 1000000) return `$${(price / 1000000).toFixed(1)}M`
-    if (price >= 1000) return `$${Math.round(price / 1000)}K`
     return `$${price.toLocaleString()}`
 }
 
@@ -323,9 +321,11 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
 
     const handleMoveEnd = useCallback((evt: any) => {
         fireBounds(evt.target)
-        // Close overlay on pan/zoom since screen coordinates become stale
         setClusterOverlay(null)
+        activeClusterIdRef.current = null
     }, [fireBounds])
+
+    const activeClusterIdRef = useRef<number | null>(null)
 
     const showClusterOverlay = useCallback((feature: any, point: { x: number; y: number }) => {
         const map = mapRef.current?.getMap()
@@ -333,6 +333,11 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
 
         const clusterId = feature.properties?.cluster_id
         const pointCount = feature.properties?.point_count || 0
+
+        // If already showing this cluster, don't update position (prevents flickering)
+        if (activeClusterIdRef.current === clusterId) return
+        activeClusterIdRef.current = clusterId
+
         const source = map.getSource('listings') as GeoJSONSource
 
         source.getClusterLeaves(clusterId, Math.min(pointCount, MAX_LEAVES), 0, (err: any, leaves: any) => {
@@ -352,13 +357,16 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
 
     const clearClusterOverlay = useCallback(() => {
         hoverTimerRef.current = setTimeout(() => {
-            if (!isOverOverlayRef.current) setClusterOverlay(null)
+            if (!isOverOverlayRef.current) {
+                setClusterOverlay(null)
+                activeClusterIdRef.current = null
+            }
         }, 250)
     }, [])
 
     const handleMouseMove = useCallback((evt: MapLayerMouseEvent) => {
         const map = mapRef.current?.getMap()
-        if (!map) return
+        if (!map || !map.getLayer('clusters')) return
 
         if (hoverTimerRef.current) {
             clearTimeout(hoverTimerRef.current)
@@ -375,7 +383,7 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
 
     const handleClick = useCallback((evt: MapLayerMouseEvent) => {
         const map = mapRef.current?.getMap()
-        if (!map) return
+        if (!map || !map.getLayer('clusters')) return
 
         const clusterFeatures = map.queryRenderedFeatures(evt.point, { layers: ['clusters'] })
         if (clusterFeatures.length > 0) {
@@ -387,10 +395,11 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
                 map.easeTo({ center: (feature.geometry as any).coordinates, zoom })
             })
             setClusterOverlay(null)
+            activeClusterIdRef.current = null
             return
         }
 
-        const pointFeatures = map.queryRenderedFeatures(evt.point, { layers: ['unclustered-point'] })
+        const pointFeatures = map.getLayer('unclustered-point') ? map.queryRenderedFeatures(evt.point, { layers: ['unclustered-point'] }) : []
         if (pointFeatures.length > 0) {
             const props = pointFeatures[0].properties
             if (!props) return
@@ -478,7 +487,7 @@ export function ListingMap({ pins, onBoundsChange }: ListingMapProps) {
             {clusterOverlay && (
                 <ClusterOverlay
                     data={clusterOverlay}
-                    onClose={() => setClusterOverlay(null)}
+                    onClose={() => { setClusterOverlay(null); activeClusterIdRef.current = null }}
                     onMouseEnter={() => {
                         isOverOverlayRef.current = true
                         if (hoverTimerRef.current) { clearTimeout(hoverTimerRef.current); hoverTimerRef.current = null }
